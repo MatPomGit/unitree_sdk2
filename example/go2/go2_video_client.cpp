@@ -17,7 +17,7 @@
 int main()
 {
     /*
-     * Initilaize ChannelFactory
+     * Initialize ChannelFactory
      */
     unitree::robot::ChannelFactory::Instance()->Init(0);
     unitree::robot::go2::VideoClient video_client;

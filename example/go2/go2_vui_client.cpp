@@ -18,7 +18,7 @@ int main(int32_t argc, const char** argv)
         exit(0);
     }
     /*
-     * Initilaize ChannelFactory
+     * Initialize ChannelFactory
      */
     std::string networkInterface = argv[1];
     unitree::robot::ChannelFactory::Instance()->Init(0, networkInterface);

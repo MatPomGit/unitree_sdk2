@@ -86,7 +86,7 @@ int main(int argc, char const *argv[]) {
   }
   int32_t ret;
   /*
-   * Initilaize ChannelFactory
+   * Initialize ChannelFactory
    */
   unitree::robot::ChannelFactory::Instance()->Init(0, argv[1]);
   unitree::robot::a2::AudioClient client;
