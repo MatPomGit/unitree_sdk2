@@ -82,7 +82,6 @@
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/g1_arm7_sdk_dds_example.dir
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/g1_ankle_swing_example.dir
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/g1_audio_client_example.dir
-/home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/g1_dex3_example.dir
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/g1_agv_client_example.dir
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/edit_cache.dir
 /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir/example/g1/CMakeFiles/rebuild_cache.dir

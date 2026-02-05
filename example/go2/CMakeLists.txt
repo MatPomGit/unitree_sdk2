@@ -1,3 +1,5 @@
+# NOTE: go2_trajectory_follow is disabled because TrajectoryFollow() method
+# is not available in the GO2 SportClient API (only available for B2 robots)
 # add_executable(go2_trajectory_follow go2_trajectory_follow.cpp)
 # target_link_libraries(go2_trajectory_follow unitree_sdk2)
 

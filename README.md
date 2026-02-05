@@ -35,11 +35,13 @@ apt-get install -y cmake g++ build-essential libyaml-cpp-dev libeigen3-dev libbo
 - `cmake` - system budowania projektów
 - `g++` - kompilator C++
 - `build-essential` - podstawowe narzędzia do kompilacji
-- `libyaml-cpp-dev` - biblioteka do parsowania plików YAML
-- `libeigen3-dev` - biblioteka algebry liniowej
-- `libboost-all-dev` - zestaw bibliotek C++
+- `libyaml-cpp-dev` - biblioteka do parsowania plików YAML (opcjonalna - potrzebna dla przykładu g1_dual_arm_example)
+- `libeigen3-dev` - biblioteka algebry liniowej (opcjonalna - potrzebna dla przykładu g1_dex3_example)
+- `libboost-all-dev` - zestaw bibliotek C++ (opcjonalna - potrzebna dla przykładów g1_termination i g1_arm_action_example)
 - `libspdlog-dev` - biblioteka do logowania
 - `libfmt-dev` - biblioteka do formatowania tekstu
+
+**Uwaga:** Biblioteki oznaczone jako opcjonalne nie są wymagane do podstawowego działania SDK. Jeśli nie są zainstalowane, odpowiednie przykłady zostaną pominięte podczas kompilacji.
 
 ### Kompilacja przykładów
 

@@ -10,7 +10,7 @@ extern "C" {
 int main()
 {
     /*
-     * Initilaize ChannelFactory
+     * Initialize ChannelFactory
      */
     unitree::robot::ChannelFactory::Instance()->Init(0);
     unitree::robot::g1::AgvClient ac;

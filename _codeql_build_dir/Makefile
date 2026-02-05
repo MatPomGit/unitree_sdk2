@@ -477,19 +477,6 @@ g1_audio_client_example/fast:
 .PHONY : g1_audio_client_example/fast
 
 #=============================================================================
-# Target rules for targets named g1_dex3_example
-
-# Build rule for target.
-g1_dex3_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_dex3_example
-.PHONY : g1_dex3_example
-
-# fast build rule for target.
-g1_dex3_example/fast:
-	$(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_dex3_example.dir/build.make example/g1/CMakeFiles/g1_dex3_example.dir/build
-.PHONY : g1_dex3_example/fast
-
-#=============================================================================
 # Target rules for targets named g1_agv_client_example
 
 # Build rule for target.
@@ -618,7 +605,6 @@ help:
 	@echo "... g1_arm5_sdk_dds_example"
 	@echo "... g1_arm7_sdk_dds_example"
 	@echo "... g1_audio_client_example"
-	@echo "... g1_dex3_example"
 	@echo "... g1_loco_client"
 	@echo "... go2_low_level"
 	@echo "... go2_robot_state_client"

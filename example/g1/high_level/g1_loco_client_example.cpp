@@ -1,3 +1,13 @@
+/**
+ * @file g1_loco_client_example.cpp
+ * @brief Example demonstrating locomotion control for G1 humanoid robot
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * This example shows how to use the LocoClient to control G1 robot's locomotion,
+ * including movement, balance, and various movement modes.
+ */
+
 #include <chrono>
 #include <iostream>
 #include <thread>

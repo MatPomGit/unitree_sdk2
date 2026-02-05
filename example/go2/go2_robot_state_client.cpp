@@ -1,3 +1,13 @@
+/**
+ * @file go2_robot_state_client.cpp
+ * @brief Example demonstrating robot state monitoring for GO2
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * This example shows how to use the RobotStateClient to monitor the GO2 robot's
+ * state including IMU data, motor states, battery level, and other system information.
+ */
+
 #include <unitree/robot/go2/robot_state/robot_state_client.hpp>
 #include <unitree/common/time/time_tool.hpp>
 

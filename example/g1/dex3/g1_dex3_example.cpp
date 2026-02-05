@@ -1,3 +1,13 @@
+/**
+ * @file g1_dex3_example.cpp
+ * @brief Example demonstrating Dex3 dexterous hand control for G1 robot
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * This example shows how to control the Dex3 hands on the G1 humanoid robot,
+ * including finger control and various hand gestures.
+ */
+
 #include <chrono>
 #include <thread>
 #include <unitree/idl/hg/HandState_.hpp> //replace your sdk path

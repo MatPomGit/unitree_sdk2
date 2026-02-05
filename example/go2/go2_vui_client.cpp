@@ -1,3 +1,13 @@
+/**
+ * @file go2_vui_client.cpp
+ * @brief Example demonstrating VUI (Voice User Interface) client for GO2 robot
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * This example shows how to use the VUI client to control various settings
+ * on the GO2 robot including brightness, volume, and other system parameters.
+ */
+
 #include <unitree/robot/go2/vui/vui_client.hpp>
 
 int main(int32_t argc, const char** argv)
@@ -8,7 +18,7 @@ int main(int32_t argc, const char** argv)
         exit(0);
     }
     /*
-     * Initilaize ChannelFactory
+     * Initialize ChannelFactory
      */
     std::string networkInterface = argv[1];
     unitree::robot::ChannelFactory::Instance()->Init(0, networkInterface);

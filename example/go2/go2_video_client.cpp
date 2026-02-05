@@ -1,3 +1,13 @@
+/**
+ * @file go2_video_client.cpp
+ * @brief Example demonstrating video stream capture from GO2 robot cameras
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * This example shows how to use the VideoClient to capture and save video frames
+ * from the GO2 robot's cameras.
+ */
+
 #include <unitree/robot/go2/video/video_client.hpp>
 #include <iostream>
 #include <fstream>
@@ -7,7 +17,7 @@
 int main()
 {
     /*
-     * Initilaize ChannelFactory
+     * Initialize ChannelFactory
      */
     unitree::robot::ChannelFactory::Instance()->Init(0);
     unitree::robot::go2::VideoClient video_client;
