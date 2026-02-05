@@ -1,6 +1,6 @@
 # Sterowanie Mechanizmem Równoległym Unitree H1_2
 
-Polski | [English (oryginał)](README_zh.md)
+Polski | [简体中文 (chiński)](README_zh.md)
 
 ## Interfejs Sterowania Mechanizmem Równoległym
 

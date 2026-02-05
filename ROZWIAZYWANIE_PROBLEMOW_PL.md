@@ -89,16 +89,18 @@ error: 'filesystem' is not a member of 'std'
 ```
 
 **Rozwiązanie:**
-Upewnij się że używasz gcc 9.4.0+:
+Upewnij się że używasz gcc 9.4.0 (wersja testowana i rekomendowana dla tego SDK):
 ```bash
 gcc --version
 g++ --version
 
-# Jeśli za stara wersja:
+# Jeśli nie masz wersji 9.4.0, zainstaluj:
 sudo apt-get install gcc-9 g++-9
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 90
 ```
+
+**Uwaga:** SDK2 jest testowane z gcc 9.4.0. Nowsze wersje powinny też działać, ale 9.4.0 jest oficjalnie wspierana.
 
 ---
 

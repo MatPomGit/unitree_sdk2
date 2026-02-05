@@ -11,7 +11,7 @@ sudo apt-get install -y cmake g++ build-essential libyaml-cpp-dev \
 
 ### 2. Kompilacja SDK
 ```bash
-cd /ścieżka/do/unitree_sdk2
+cd ~/unitree_sdk2  # Przejdź do katalogu gdzie sklonowałeś repozytorium
 mkdir build && cd build
 cmake ..
 make
