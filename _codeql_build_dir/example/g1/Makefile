@@ -235,20 +235,6 @@ g1_audio_client_example/fast:
 .PHONY : g1_audio_client_example/fast
 
 # Convenience name for target.
-example/g1/CMakeFiles/g1_dex3_example.dir/rule:
-	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/g1/CMakeFiles/g1_dex3_example.dir/rule
-.PHONY : example/g1/CMakeFiles/g1_dex3_example.dir/rule
-
-# Convenience name for target.
-g1_dex3_example: example/g1/CMakeFiles/g1_dex3_example.dir/rule
-.PHONY : g1_dex3_example
-
-# fast build rule for target.
-g1_dex3_example/fast:
-	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_dex3_example.dir/build.make example/g1/CMakeFiles/g1_dex3_example.dir/build
-.PHONY : g1_dex3_example/fast
-
-# Convenience name for target.
 example/g1/CMakeFiles/g1_agv_client_example.dir/rule:
 	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/g1/CMakeFiles/g1_agv_client_example.dir/rule
 .PHONY : example/g1/CMakeFiles/g1_agv_client_example.dir/rule
@@ -309,30 +295,6 @@ audio/g1_audio_client_example.s: audio/g1_audio_client_example.cpp.s
 audio/g1_audio_client_example.cpp.s:
 	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_audio_client_example.dir/build.make example/g1/CMakeFiles/g1_audio_client_example.dir/audio/g1_audio_client_example.cpp.s
 .PHONY : audio/g1_audio_client_example.cpp.s
-
-dex3/g1_dex3_example.o: dex3/g1_dex3_example.cpp.o
-.PHONY : dex3/g1_dex3_example.o
-
-# target to build an object file
-dex3/g1_dex3_example.cpp.o:
-	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_dex3_example.dir/build.make example/g1/CMakeFiles/g1_dex3_example.dir/dex3/g1_dex3_example.cpp.o
-.PHONY : dex3/g1_dex3_example.cpp.o
-
-dex3/g1_dex3_example.i: dex3/g1_dex3_example.cpp.i
-.PHONY : dex3/g1_dex3_example.i
-
-# target to preprocess a source file
-dex3/g1_dex3_example.cpp.i:
-	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_dex3_example.dir/build.make example/g1/CMakeFiles/g1_dex3_example.dir/dex3/g1_dex3_example.cpp.i
-.PHONY : dex3/g1_dex3_example.cpp.i
-
-dex3/g1_dex3_example.s: dex3/g1_dex3_example.cpp.s
-.PHONY : dex3/g1_dex3_example.s
-
-# target to generate assembly for a file
-dex3/g1_dex3_example.cpp.s:
-	cd /home/runner/work/unitree_sdk2/unitree_sdk2/_codeql_build_dir && $(MAKE) $(MAKESILENT) -f example/g1/CMakeFiles/g1_dex3_example.dir/build.make example/g1/CMakeFiles/g1_dex3_example.dir/dex3/g1_dex3_example.cpp.s
-.PHONY : dex3/g1_dex3_example.cpp.s
 
 high_level/g1_arm5_sdk_dds_example.o: high_level/g1_arm5_sdk_dds_example.cpp.o
 .PHONY : high_level/g1_arm5_sdk_dds_example.o
@@ -447,7 +409,6 @@ help:
 	@echo "... g1_arm5_sdk_dds_example"
 	@echo "... g1_arm7_sdk_dds_example"
 	@echo "... g1_audio_client_example"
-	@echo "... g1_dex3_example"
 	@echo "... g1_loco_client"
 	@echo "... agv/g1_agv_client_example.o"
 	@echo "... agv/g1_agv_client_example.i"
@@ -455,9 +416,6 @@ help:
 	@echo "... audio/g1_audio_client_example.o"
 	@echo "... audio/g1_audio_client_example.i"
 	@echo "... audio/g1_audio_client_example.s"
-	@echo "... dex3/g1_dex3_example.o"
-	@echo "... dex3/g1_dex3_example.i"
-	@echo "... dex3/g1_dex3_example.s"
 	@echo "... high_level/g1_arm5_sdk_dds_example.o"
 	@echo "... high_level/g1_arm5_sdk_dds_example.i"
 	@echo "... high_level/g1_arm5_sdk_dds_example.s"
