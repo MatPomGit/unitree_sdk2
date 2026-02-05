@@ -1,3 +1,18 @@
+/*
+ * ============================================================================
+ * PRZYKŁAD STEROWANIA ROBOTEM GO2 - POZYCJA STOJĄCA
+ * ============================================================================
+ * 
+ * Ten program demonstruje podstawowe sterowanie robotem GO2 na niskim poziomie.
+ * Program przeprowadza robota przez serię pozycji, pokazując jak:
+ * - Inicjalizować komunikację z robotem
+ * - Wysyłać komendy do silników
+ * - Odbierać dane z czujników
+ * - Sterować ruchem w sposób płynny i bezpieczny
+ * 
+ * UWAGA: Robot musi być zawieszony lub leżeć na ziemi przed uruchomieniem!
+ */
+
 #include <iostream>
 #include <stdio.h>
 #include <stdint.h>
@@ -14,71 +29,91 @@ using namespace unitree::common;
 using namespace unitree::robot;
 using namespace unitree::robot::b2;
 
-#define TOPIC_LOWCMD "rt/lowcmd"
-#define TOPIC_LOWSTATE "rt/lowstate"
+// Definicje tematów DDS (Data Distribution Service) - kanały komunikacji z robotem
+#define TOPIC_LOWCMD "rt/lowcmd"      // Kanał do wysyłania komend do robota
+#define TOPIC_LOWSTATE "rt/lowstate"  // Kanał do odbierania stanu robota
 
-constexpr double PosStopF = (2.146E+9f);
-constexpr double VelStopF = (16000.0f);
+// Stałe używane do zatrzymania pozycji i prędkości silnika
+constexpr double PosStopF = (2.146E+9f);  // Wartość specjalna oznaczająca "nie kontroluj pozycji"
+constexpr double VelStopF = (16000.0f);   // Wartość specjalna oznaczająca "nie kontroluj prędkości"
 
+/* 
+ * Klasa Custom - główna klasa sterująca robotem
+ * Zawiera wszystkie metody i dane potrzebne do komunikacji i sterowania
+ */
 class Custom
 {
 public:
     explicit Custom(){}
     ~Custom(){}
 
-    void Init();
-    void Start();
+    void Init();   // Inicjalizacja połączenia z robotem i konfiguracja
+    void Start();  // Uruchomienie głównej pętli sterowania
     
 private:
-    void InitLowCmd();
-    void LowStateMessageHandler(const void* messages);
-    void LowCmdWrite();
-    int queryMotionStatus();
-    std::string queryServiceName(std::string form,std::string name);
+    void InitLowCmd();  // Inicjalizacja struktury komend - ustawienie wartości początkowych
+    void LowStateMessageHandler(const void* messages);  // Odbiera dane ze stanu robota (pozycje, prędkości, czujniki)
+    void LowCmdWrite();  // Główna funkcja wysyłająca komendy do robota - wywołana cyklicznie
+    int queryMotionStatus();  // Sprawdza czy inne usługi sterowania są aktywne
+    std::string queryServiceName(std::string form,std::string name);  // Mapuje nazwy usług sterowania
  
 private:
-    float Kp = 60.0;
-    float Kd = 5.0;
+    // Parametry regulatora PD (Proporcjonalno-Różniczkowego)
+    float Kp = 60.0;  // Kp - sztywność: jak mocno silnik dąży do pozycji docelowej
+    float Kd = 5.0;   // Kd - tłumienie: jak mocno redukowane są oscylacje
+    
+    // Zmienne pomocnicze do zarządzania czasem
     double time_consume = 0;
     int rate_count = 0;
     int sin_count = 0;
-    int motiontime = 0;
-    float dt = 0.002; // 0.001~0.01
+    int motiontime = 0;  // Licznik czasu od rozpoczęcia programu
+    float dt = 0.002;    // Krok czasowy: 0.002s = 2ms (częstotliwość 500Hz)
 
-    MotionSwitcherClient msc;
+    MotionSwitcherClient msc;  // Klient do zarządzania trybami ruchu robota
 
-    unitree_go::msg::dds_::LowCmd_ low_cmd{};      // default init
-    unitree_go::msg::dds_::LowState_ low_state{};  // default init
+    // Struktury danych do komunikacji z robotem
+    unitree_go::msg::dds_::LowCmd_ low_cmd{};      // Komenda wysyłana do robota (co chcemy aby robił)
+    unitree_go::msg::dds_::LowState_ low_state{};  // Stan odbierany z robota (co aktualnie robi)
 
-    /*publisher*/
+    /* Publisher - obiekt wysyłający dane DO robota */
     ChannelPublisherPtr<unitree_go::msg::dds_::LowCmd_> lowcmd_publisher;
-    /*subscriber*/
+    
+    /* Subscriber - obiekt odbierający dane Z robota */
     ChannelSubscriberPtr<unitree_go::msg::dds_::LowState_> lowstate_subscriber;
 
-    /*LowCmd write thread*/
+    /* Wątek wykonujący cykliczne wysyłanie komend (500Hz = co 2ms) */
     ThreadPtr lowCmdWriteThreadPtr;
 
-    float _targetPos_1[12] = {0.0, 1.36, -2.65, 0.0, 1.36, -2.65,
+    /* 
+     * Pozycje docelowe dla 12 stawów robota GO2 (4 nogi × 3 stawy na nogę)
+     * Kolejność: [biodro, udo, podudzie] dla każdej nogi (FL, FR, RL, RR)
+     * FL = przednia lewa, FR = przednia prawa, RL = tylna lewa, RR = tylna prawa
+     */
+    float _targetPos_1[12] = {0.0, 1.36, -2.65, 0.0, 1.36, -2.65,    // Pozycja 1: nogi rozstawione
                               -0.2, 1.36, -2.65, 0.2, 1.36, -2.65};
 
-    float _targetPos_2[12] = {0.0, 0.67, -1.3, 0.0, 0.67, -1.3,
+    float _targetPos_2[12] = {0.0, 0.67, -1.3, 0.0, 0.67, -1.3,      // Pozycja 2: pozycja stojąca
                               0.0, 0.67, -1.3, 0.0, 0.67, -1.3};
 
-    float _targetPos_3[12] = {-0.35, 1.36, -2.65, 0.35, 1.36, -2.65,
+    float _targetPos_3[12] = {-0.35, 1.36, -2.65, 0.35, 1.36, -2.65,  // Pozycja 3: biodra rozstawione
                               -0.5, 1.36, -2.65, 0.5, 1.36, -2.65};
 
-    float _startPos[12];
-    float _duration_1 = 500;   
-    float _duration_2 = 500; 
-    float _duration_3 = 1000;   
-    float _duration_4 = 900;   
+    float _startPos[12];  // Pozycja początkowa odczytana przy starcie programu
+    
+    // Czasy trwania przejść między pozycjami (w ilości kroków po 2ms)
+    float _duration_1 = 500;   // 500 kroków × 2ms = 1 sekunda
+    float _duration_2 = 500;   // 1 sekunda
+    float _duration_3 = 1000;  // 2 sekundy
+    float _duration_4 = 900;   // 1.8 sekundy
+    
+    // Procent ukończenia dla każdego etapu ruchu (0.0 = start, 1.0 = koniec)
     float _percent_1 = 0;    
     float _percent_2 = 0;    
     float _percent_3 = 0;    
     float _percent_4 = 0;    
 
-    bool firstRun = true;
-    bool done = false;
+    bool firstRun = true;  // Flaga: czy to pierwsze wywołanie funkcji sterującej
+    bool done = false;     // Flaga: czy sekwencja ruchów została ukończona
 };
 
 uint32_t crc32_core(uint32_t* ptr, uint32_t len)
