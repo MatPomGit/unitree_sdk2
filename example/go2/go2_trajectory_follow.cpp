@@ -1,3 +1,14 @@
+/**
+ * @file go2_trajectory_follow.cpp
+ * @brief Example for trajectory following (currently disabled)
+ * @copyright Copyright (c) 2016-2023 Unitree Robotics. All rights reserved.
+ * @license BSD 3-Clause License
+ * 
+ * NOTE: This example is currently disabled because the TrajectoryFollow() method
+ * is not available in the GO2 SportClient API. This functionality is only
+ * available for B2 series robots.
+ */
+
 #include <unitree/robot/go2/sport/sport_client.hpp>
 #include <unitree/common/thread/recurrent_thread.hpp>
 #include <math.h>
